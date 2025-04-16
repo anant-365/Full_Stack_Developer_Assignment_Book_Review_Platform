@@ -34,39 +34,39 @@ To clone and set up the project on your local system:
 3. Install dependencies:
     - **Backend**: Navigate to the `server` directory and install dependencies:
       ```bash
-      cd server
+      cd backend
       npm install
       ```
 
     - **Frontend**: Navigate to the `client` directory and install dependencies:
       ```bash
-      cd client
+      cd frontend/book_review_frontend
       npm install
       ```
 
-4. Create a `.env` file in both `server` and `client` directories.
+4. Create a `.env` file in both `backend` and `frontend` directories.
 
-   - In the `server` `.env` file, add:
+   - In the `backend` `.env` file, add:
      ```
      MONGO_URI=your_mongodb_connection_string
      JWT_SECRET=your_jwt_secret
      ```
 
-   - In the `client` `.env` file, add:
+   - In the `frontend` `.env` file, add:
      ```
-     REACT_APP_API_URL=http://localhost:5000
+     Backend_URL=http://localhost:5000
      ```
 
 5. Run the project:
     - **Backend**:
       ```bash
-      cd server
-      npm start
+      cd backend
+      node index.js
       ```
     - **Frontend**:
       ```bash
-      cd client
-      npm start
+      cd book_review_frontend
+      npm run dev
       ```
 
 Now, your app should be running at `http://localhost:3000`.
@@ -92,12 +92,12 @@ Now, your app should be running at `http://localhost:3000`.
      ```
 
 3. **Userbookapp Collection**:
-   - All **admin users** must be present in the `userbookapp` collection, but **normal users** don't need to be added to the admin collection.
+   - All **admin users** must be present in the `userbookapp` collection, but all **normal users** don't need to be added to the admin collection.
 
 4. **Unique ISBN**: The `isbn` field of each book must be **unique**. Ensure that no two books have the same ISBN.
 
 5. **Book Addition**:
-   - New books can be added by both **normal users** and **admins**. To ensure this, the book creation functionality should check that the user submitting the book is authenticated.
+   - New books can be added only by the **admins**. To ensure this, the book creation functionality should check that the user submitting the book is present in admin collection in mongodb.
 
 6. **Common User in Both Collections**: Ensure there is at least **one common user** present in both the `admin` and `userbookapp` collections for the system to work as intended.
 
@@ -110,12 +110,6 @@ Now, your app should be running at `http://localhost:3000`.
 - **Testing**:
   - You can test the backend APIs using Postman or similar tools.
   - Use `npm run test` in the backend directory to run tests.
-
-- **Starting the Development Server**:
-  - You can start both backend and frontend simultaneously by running the following command from the root directory:
-    ```bash
-    npm run dev
-    ```
 
 - **Environment Variables**: Don't forget to add or update any necessary environment variables like `JWT_SECRET` or `MONGO_URI` when deploying to production.
 
