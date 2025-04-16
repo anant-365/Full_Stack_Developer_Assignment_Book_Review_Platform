@@ -23,7 +23,7 @@ To clone and set up the project on your local system:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/book-review-website.git
+    git clone https://github.com/anant-365/Full_Stack_Developer_Assignment_Book_Review_Platform.git
     ```
 
 2. Navigate into the project folder:
